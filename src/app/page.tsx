@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Navbar } from "@/components/layout/Navbar";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { RiskMap } from "@/components/dashboard/RiskMap";
 import { AlertFeed } from "@/components/dashboard/AlertFeed";
@@ -58,9 +57,7 @@ export default function Dashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-background pt-20 pb-10 px-6 relative">
-      <Navbar />
-
+    <div className="p-6 relative">
       {/* Emergency Overlay */}
       {hasCriticalAlert && (
         <motion.div 
@@ -172,6 +169,6 @@ export default function Dashboard() {
           Republic of Rwanda — Disaster Intelligence Operations Command
         </p>
       </div>
-    </main>
+    </div>
   );
 }

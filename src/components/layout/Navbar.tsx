@@ -5,9 +5,10 @@ import { Shield, Clock, Bell, User, Search, Activity } from "lucide-react";
 import { motion } from "framer-motion";
 
 export const Navbar = () => {
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState<Date | null>(null);
 
   useEffect(() => {
+    setTime(new Date());
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
@@ -43,7 +44,9 @@ export const Navbar = () => {
 
         <div className="flex items-center gap-2 text-slate-300 border-x border-white/10 px-6">
           <Clock className="w-4 h-4 text-cyan-400" />
-          <span className="text-sm font-mono">{time.toLocaleTimeString()}</span>
+          <span className="text-sm font-mono min-w-[80px]">
+            {time ? time.toLocaleTimeString() : "--:--:--"}
+          </span>
         </div>
 
         <div className="flex items-center gap-4">

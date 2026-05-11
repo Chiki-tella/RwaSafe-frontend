@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   description: "Real-time satellite-based landslide monitoring and intelligence platform for Rwanda.",
 };
 
+import { Navbar } from "@/components/layout/Navbar";
+import { Sidebar } from "@/components/layout/Sidebar";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,9 +28,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning={true}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-background text-foreground selection:bg-cyan-500/30">
+        <Navbar />
+        <Sidebar />
+        <main className="lg:pl-64 pt-16 min-h-screen">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
